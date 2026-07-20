@@ -1,169 +1,19 @@
 <!doctype html>
-<html lang="de">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Moritz · Psychologie Teil 3</title>
-  <style>
-    :root{--ink:#24313f;--muted:#667085;--paper:#fffdf9;--blue:#dceef8;--mint:#dff3e7;--peach:#fde8d7;--lilac:#eee5fa;--yellow:#fff3c9;--rose:#f8e1e8;--line:#d9dee5;--accent:#4f7f8f}
-    *{box-sizing:border-box} body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:linear-gradient(180deg,#f7fbfc 0%,#fbfaf6 100%);color:var(--ink);line-height:1.72}
-    .shell{max-width:1040px;margin:auto;padding:24px}.hero{background:var(--paper);border:1px solid var(--line);border-radius:28px;padding:40px;box-shadow:0 14px 45px rgba(43,64,80,.08)}
-    h1{font-size:clamp(2.3rem,6vw,4.6rem);line-height:1.02;margin:.2em 0}.eyebrow{letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:var(--accent)}
-    .lead{font-size:1.15rem;max-width:780px}.nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.nav a{padding:10px 15px;border-radius:999px;background:var(--blue);color:var(--ink);text-decoration:none;font-weight:700}
-    main{display:grid;gap:28px;margin-top:28px}.chapter{background:var(--paper);border:1px solid var(--line);border-radius:26px;padding:clamp(22px,4vw,42px)}
-    h2{font-size:clamp(1.9rem,4vw,3rem);line-height:1.15;margin:.1em 0 .7em} h3{font-size:1.4rem;margin-top:2em} h4{font-size:1.1rem;margin-bottom:.35em}
-    .intro{font-size:1.08rem}.callout{border-left:7px solid var(--accent);padding:18px 20px;border-radius:16px;margin:22px 0}.blue{background:var(--blue)}.mint{background:var(--mint)}.peach{background:var(--peach)}.lilac{background:var(--lilac)}.yellow{background:var(--yellow)}.rose{background:var(--rose)}
-    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.card{border:1px solid var(--line);border-radius:18px;padding:18px;background:white}.card h4{margin-top:0}
-    .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:22px 0}.step{padding:14px 10px;border-radius:16px;background:var(--blue);text-align:center;font-weight:800}
-    .table-wrap{overflow-x:auto}.compare{width:100%;border-collapse:collapse;margin:16px 0}.compare th,.compare td{border:1px solid var(--line);padding:12px;vertical-align:top}.compare th{background:var(--lilac);text-align:left}
-    .case{border:2px dashed #aac0c7;border-radius:18px;padding:20px;background:#fbfdfe}.answer{margin-top:14px;padding:16px;border-radius:14px;background:var(--mint)}
-    .summary{background:#f3f7f8;border-radius:18px;padding:20px}.stars{font-weight:800;color:#7a5b00}.footer{text-align:center;color:var(--muted);padding:35px 10px 15px}
-    @media(max-width:760px){.flow{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.hero{padding:26px}.shell{padding:12px}.chapter{border-radius:20px}}
-    @media print{body{background:white}.shell{max-width:none;padding:0}.hero,.chapter{box-shadow:none;break-inside:avoid}.nav{display:none}.chapter{page-break-before:always;border:none}.hero{border:none}.footer{display:none}}
-
-    /* Einheitliche Navigation und dekorative Überschriftenrahmen */
-    html{scroll-behavior:smooth}
-    h2{position:relative;padding:18px 22px;border:2px solid #c8dde5;border-radius:20px;background:linear-gradient(135deg,var(--blue),#ffffff);box-shadow:0 7px 18px rgba(79,127,143,.08)}
-    h2::before{content:"";position:absolute;left:18px;right:18px;bottom:-7px;height:7px;border-radius:0 0 10px 10px;background:var(--mint)}
-    h3{padding:12px 16px;border-left:6px solid var(--accent);border-radius:12px;background:var(--lilac);box-shadow:0 3px 10px rgba(79,127,143,.06)}
-    h4{display:inline-block;padding:5px 10px;border-radius:10px;background:var(--peach)}
-    .back-to-top{position:fixed;right:18px;bottom:18px;z-index:50;display:flex;align-items:center;gap:8px;padding:12px 15px;border:1px solid #b8cbd2;border-radius:999px;background:rgba(255,253,249,.96);color:var(--ink);text-decoration:none;font-weight:800;box-shadow:0 10px 28px rgba(43,64,80,.18);backdrop-filter:blur(8px)}
-    .back-to-top:hover{transform:translateY(-2px);background:var(--blue)}
-    .page-switcher{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 24px;padding:14px;border:1px solid var(--line);border-radius:18px;background:var(--paper)}
-    .page-switcher a{padding:9px 13px;border-radius:999px;background:var(--mint);color:var(--ink);text-decoration:none;font-weight:750}
-    @media(max-width:560px){.back-to-top span{display:none}.back-to-top{padding:13px 16px;font-size:1.2rem}h2{padding:15px 17px}h3{padding:10px 13px}}
-    @media print{.back-to-top,.page-switcher{display:none!important}h2,h3{box-shadow:none}}
-
-  </style>
-</head>
-<body id="seitenanfang">
-<div class="shell">
-  <header class="hero">
-    <div class="eyebrow">Psychologie · Ergotherapie</div>
-    <h1>Teil 3 · Kommunikation</h1>
-    <p class="lead">Dieses Kapitel erklärt Kommunikation als Grundlage therapeutischer Beziehungen. Im Mittelpunkt stehen das Sender-Empfänger-Modell, die Gesprächsführung nach Carl Rogers, aktives Zuhören, Gewaltfreie Kommunikation sowie hilfreiche und hinderliche Kommunikationsweisen.</p>
-    <div class="nav"><a href="index.html">Teil 1</a><a href="teil2.html">Teil 2</a><a href="#kommunikation">Kommunikation</a><a href="#klausurtraining">Klausurtraining</a></div>
-  </header>
-
-
-  <nav class="page-switcher" aria-label="Lehrbuchteile">
-    <a href="index.html">Teil 1 · Wahrnehmung & Motivation</a>
-    <a href="teil2.html">Teil 2 · Entwicklung, Gedächtnis & Emotion</a>
-    <a href="teil3.html">Teil 3 · Kommunikation</a>
-  </nav>
-
-  <main>
-    <section class="chapter" id="kommunikation">
-      <div class="eyebrow">Kapitel 5</div>
-      <h2>Kommunikation</h2>
-      <p class="intro">Kommunikation bedeutet mehr als das Austauschen von Worten. Menschen kommunizieren gleichzeitig über Sprache, Tonfall, Mimik, Gestik, Körperhaltung, Abstand und Verhalten. In der Ergotherapie entscheidet die Qualität der Kommunikation darüber, ob Vertrauen entsteht, Bedürfnisse erkannt werden und Therapieziele gemeinsam getragen werden.</p>
-
-      <div class="callout blue"><strong>Definition:</strong> Kommunikation ist ein wechselseitiger Prozess, bei dem Menschen Informationen, Gedanken, Gefühle und Bedeutungen austauschen. Dabei senden und empfangen sie fortlaufend verbale und nonverbale Signale.</div>
-
-      <h3>5.1 Voraussetzungen gelingender Kommunikation</h3>
-      <p>Kommunikation gelingt nicht automatisch. Sie braucht mindestens einen Sender, einen Empfänger, eine Botschaft und einen gemeinsamen Verständigungsrahmen. Zusätzlich spielen Aufmerksamkeit, Sprache, Beziehung, Situation und Rückmeldung eine Rolle.</p>
-      <div class="grid">
-        <div class="card"><h4>Aufmerksamkeit</h4><p>Der Gesprächspartner muss geistig und emotional in der Lage sein, Informationen aufzunehmen. Schmerz, Angst, Müdigkeit oder Reizüberflutung können dies erschweren.</p></div>
-        <div class="card"><h4>Gemeinsame Zeichen</h4><p>Wörter, Symbole und Gesten müssen ähnlich verstanden werden. Fachbegriffe können Missverständnisse erzeugen, wenn sie nicht erklärt werden.</p></div>
-        <div class="card"><h4>Beziehung und Vertrauen</h4><p>Menschen sprechen offener, wenn sie sich respektiert und sicher fühlen. Misstrauen verändert, wie Botschaften gedeutet werden.</p></div>
-        <div class="card"><h4>Rückmeldung</h4><p>Erst durch Nachfragen, Zusammenfassen oder sichtbare Reaktionen wird deutlich, ob eine Botschaft angekommen ist.</p></div>
-      </div>
-
-      <div class="callout yellow"><strong>Merksatz:</strong> Gesagt ist nicht automatisch gehört, gehört ist nicht automatisch verstanden und verstanden ist nicht automatisch umgesetzt.</div>
-
-      <h3>5.2 Das Sender-Empfänger-Modell</h3>
-      <div class="flow"><div class="step">Sender</div><div class="step">Botschaft</div><div class="step">Empfänger</div><div class="step">Rückmeldung</div></div>
-      <p>Der Sender formuliert eine Botschaft und übermittelt sie über einen Kanal, zum Beispiel Sprache, Schrift oder Körpersprache. Der Empfänger nimmt die Botschaft auf und interpretiert sie. Diese Interpretation hängt von Erfahrungen, Erwartungen, Gefühlen und der Beziehung zum Sender ab. Deshalb ist die empfangene Bedeutung nicht immer mit der beabsichtigten Bedeutung identisch.</p>
-      <p>Störungen können an jeder Stelle auftreten: Die Botschaft ist unklar, der Empfänger ist abgelenkt, Fachsprache wird nicht verstanden, der Tonfall widerspricht dem Inhalt oder eine frühere negative Erfahrung beeinflusst die Deutung.</p>
-      <div class="callout peach"><strong>Ergotherapie-Beispiel:</strong> Eine Therapeutin sagt: „Das müssen Sie zu Hause täglich üben.“ Der Patient hört möglicherweise nicht nur eine sachliche Empfehlung, sondern erlebt den Satz als Druck oder Vorwurf. Eine klarere und partnerschaftlichere Formulierung wäre: „Welche Übungszeit wäre für Sie im Alltag realistisch?“</div>
-
-      <h3>5.3 Verbale und nonverbale Kommunikation</h3>
-      <p><strong>Verbale Kommunikation</strong> umfasst gesprochene und geschriebene Sprache. <strong>Nonverbale Kommunikation</strong> umfasst Mimik, Gestik, Blickkontakt, Körperhaltung, Abstand, Berührung und Sprechtempo. Hinzu kommt die <strong>paraverbale Ebene</strong>: Tonhöhe, Lautstärke, Betonung und Pausen.</p>
-      <p>Diese Ebenen können übereinstimmen oder sich widersprechen. Sagt jemand „Alles gut“ mit gesenktem Blick und leiser Stimme, wirkt die nonverbale Botschaft möglicherweise glaubwürdiger als der Wortlaut.</p>
-      <div class="callout rose"><strong>Klausurhinweis:</strong> In Fallbeispielen sollte nicht nur der Wortlaut betrachtet werden. Beschreibe auch Tonfall, Blickkontakt, Körperhaltung und Beziehungssituation.</div>
-
-      <h3>5.4 Gesprächsführung nach Carl Rogers</h3>
-      <p>Carl Rogers entwickelte die personenzentrierte Gesprächsführung. Im Mittelpunkt steht nicht das schnelle Lösen eines Problems, sondern eine Beziehung, in der der Mensch sich verstanden, angenommen und ernst genommen fühlt. Drei Grundhaltungen sind zentral.</p>
-      <div class="grid">
-        <div class="card"><h4>Empathie</h4><p>Empathie bedeutet, die innere Welt des anderen möglichst genau zu verstehen. Die Therapeutin versucht nachzuvollziehen, wie der Patient eine Situation erlebt, ohne sofort zu bewerten.</p></div>
-        <div class="card"><h4>Wertschätzung</h4><p>Wertschätzung bedeutet, den Menschen unabhängig von Leistung, Verhalten oder Fortschritt als Person zu respektieren.</p></div>
-        <div class="card"><h4>Kongruenz oder Echtheit</h4><p>Die Therapeutin verhält sich glaubwürdig und nicht künstlich. Worte, Haltung und Verhalten passen zusammen.</p></div>
-        <div class="card"><h4>Therapeutische Wirkung</h4><p>Diese Haltung fördert Sicherheit, Selbstexploration, Motivation und eine tragfähige Arbeitsbeziehung.</p></div>
-      </div>
-      <div class="callout lilac"><strong>Eselsbrücke:</strong> Rogers = verstehen, annehmen, echt sein.</div>
-
-      <h3>5.5 Aktives Zuhören</h3>
-      <p>Aktives Zuhören bedeutet, dem Gesprächspartner sichtbar und hörbar zu zeigen, dass seine Aussagen aufgenommen und verstanden werden. Es ist keine bloße Technik, sondern Ausdruck echter Aufmerksamkeit.</p>
-      <div class="grid">
-        <div class="card"><h4>Paraphrasieren</h4><p>Der Inhalt wird mit eigenen Worten wiedergegeben: „Sie sagen, dass Ihnen die Übungen morgens zu anstrengend sind.“</p></div>
-        <div class="card"><h4>Gefühle spiegeln</h4><p>Ein vermutetes Gefühl wird vorsichtig benannt: „Das klingt, als wären Sie enttäuscht.“</p></div>
-        <div class="card"><h4>Offene Fragen</h4><p>Offene Fragen fördern ausführliche Antworten: „Was ist für Sie dabei besonders schwierig?“</p></div>
-        <div class="card"><h4>Zusammenfassen</h4><p>Wichtige Inhalte werden gebündelt, damit beide Seiten dasselbe Verständnis prüfen können.</p></div>
-        <div class="card"><h4>Pausen zulassen</h4><p>Schweigen kann Denkzeit geben. Zu schnelles Nachfragen kann den Gesprächsfluss stören.</p></div>
-        <div class="card"><h4>Nonverbale Aufmerksamkeit</h4><p>Zugewandte Körperhaltung, angemessener Blickkontakt und ruhige Stimme unterstützen das Zuhören.</p></div>
-      </div>
-      <div class="callout mint"><strong>Wichtig:</strong> Aktives Zuhören bedeutet nicht, jeder Aussage zuzustimmen. Es bedeutet, die Bedeutung der Aussage zunächst zu verstehen.</div>
-
-      <h3>5.6 Gewaltfreie Kommunikation nach Marshall Rosenberg</h3>
-      <p>Die Gewaltfreie Kommunikation soll helfen, Konflikte klar und respektvoll anzusprechen. Sie trennt Beobachtungen von Bewertungen und verbindet Gefühle mit Bedürfnissen. Der klassische Ablauf besteht aus vier Schritten.</p>
-      <div class="flow"><div class="step">1. Beobachtung</div><div class="step">2. Gefühl</div><div class="step">3. Bedürfnis</div><div class="step">4. Bitte</div></div>
-      <h4>1. Beobachtung</h4><p>Beschreibe möglichst konkret, was wahrnehmbar geschehen ist, ohne zu bewerten. Statt „Sie machen nie mit“ besser: „In den letzten drei Terminen haben Sie die Heimübungen nicht durchgeführt.“</p>
-      <h4>2. Gefühl</h4><p>Benennen, welches Gefühl dadurch entsteht, zum Beispiel Sorge, Unsicherheit oder Enttäuschung.</p>
-      <h4>3. Bedürfnis</h4><p>Das zugrunde liegende Bedürfnis ausdrücken, etwa Klarheit, Zusammenarbeit, Sicherheit oder Fortschritt.</p>
-      <h4>4. Bitte</h4><p>Eine konkrete, realistische und überprüfbare Bitte formulieren. Eine Bitte lässt grundsätzlich die Möglichkeit zu, Nein zu sagen.</p>
-      <div class="callout blue"><strong>Beispiel:</strong> „Mir ist aufgefallen, dass die Übungen in dieser Woche nicht durchgeführt wurden. Ich bin besorgt, weil mir wichtig ist, dass wir einen realistischen Weg für Ihren Alltag finden. Wären Sie bereit, gemeinsam eine kürzere Übung auszuwählen?“</div>
-
-      <h3>5.7 Hilfreiche und hinderliche Kommunikation</h3>
-      <div class="table-wrap"><table class="compare"><tr><th>Hilfreich</th><th>Hinderlich</th></tr><tr><td>offene Fragen</td><td>Verhörartige Fragefolgen</td></tr><tr><td>Ich-Botschaften</td><td>Vorwürfe und Du-Botschaften</td></tr><tr><td>konkrete Rückmeldung</td><td>pauschale Bewertung</td></tr><tr><td>Gefühle und Bedürfnisse ernst nehmen</td><td>Bagatellisieren: „Das ist doch nicht schlimm“</td></tr><tr><td>Verständnis prüfen</td><td>annehmen, dass alles verstanden wurde</td></tr><tr><td>Wahlmöglichkeiten anbieten</td><td>Druck, Drohung oder Zwang</td></tr><tr><td>angemessene Fachsprache</td><td>unnötig komplizierte Begriffe</td></tr></table></div>
-      <p>Besonders hinderlich sind vorschnelle Ratschläge. Ein Rat kann sinnvoll sein, aber erst nachdem das Problem verstanden wurde. Wer sofort Lösungen anbietet, vermittelt möglicherweise: „Ich weiß besser als du, was du brauchst.“</p>
-
-      <h3>5.8 Kommunikation in schwierigen Situationen</h3>
-      <div class="grid">
-        <div class="card"><h4>Angst</h4><p>Langsam sprechen, Informationen reduzieren, Sicherheit vermitteln und Verständnis prüfen.</p></div>
-        <div class="card"><h4>Wut</h4><p>Ruhig bleiben, Grenzen klar benennen, Gefühle anerkennen und keine Gegenangriffe starten.</p></div>
-        <div class="card"><h4>Scham</h4><p>Diskretion, respektvolle Sprache und Wahlmöglichkeiten sind besonders wichtig.</p></div>
-        <div class="card"><h4>Kognitive Einschränkungen</h4><p>Kurze Sätze, konkrete Begriffe, Wiederholungen, visuelle Unterstützung und genügend Zeit helfen.</p></div>
-      </div>
-
-      <h3>5.9 Fallbeispiel mit Musterlösung</h3>
-      <div class="case"><strong>Fall:</strong> Ein Patient reagiert gereizt und sagt: „Sie verstehen überhaupt nicht, wie anstrengend das für mich ist.“ Die Therapeutin antwortet: „Sie müssen sich einfach mehr bemühen, sonst kommen wir nicht weiter.“
-        <div class="answer"><strong>Musterlösung:</strong> Die Antwort der Therapeutin ist hinderlich, weil sie bewertet und Druck erzeugt. Die Belastung des Patienten wird nicht empathisch aufgenommen. Nach Rogers wäre zunächst Verständnis wichtig. Eine passendere Reaktion wäre: „Sie erleben die Übungen im Moment als sehr anstrengend und fühlen sich damit offenbar nicht ausreichend verstanden. Was genau ist für Sie am belastendsten?“ Dadurch wird aktives Zuhören eingesetzt und die therapeutische Beziehung stabilisiert. Anschließend können Schwierigkeit, Schmerzen, Erschöpfung oder Angst gemeinsam geklärt und die Aufgabe angepasst werden.</div>
-      </div>
-
-      <h3>5.10 Klausurwissen</h3>
-      <div class="summary"><span class="stars">★★★</span> Sicher erklären können: Voraussetzungen von Kommunikation, Sender-Empfänger-Modell, verbale und nonverbale Ebenen, Rogers mit Empathie–Wertschätzung–Echtheit, aktives Zuhören, vier Schritte der Gewaltfreien Kommunikation sowie hilfreiche und hinderliche Kommunikationsweisen.</div>
-    </section>
-
-    <section class="chapter" id="klausurtraining">
-      <div class="eyebrow">Anwendung</div>
-      <h2>Klausurtraining mit Musterantworten</h2>
-
-      <h3>Aufgabe 1: Erläutern Sie das Sender-Empfänger-Modell.</h3>
-      <div class="answer"><strong>Musterantwort:</strong> Ein Sender übermittelt eine Botschaft über einen bestimmten Kanal. Der Empfänger nimmt diese Botschaft auf und interpretiert sie. Dabei können Störungen auftreten, etwa unklare Sprache, Ablenkung, Fachbegriffe oder eine belastete Beziehung. Rückmeldung ist wichtig, um zu prüfen, ob die Botschaft so verstanden wurde, wie sie gemeint war.</div>
-
-      <h3>Aufgabe 2: Nennen und erklären Sie die Grundhaltungen nach Rogers.</h3>
-      <div class="answer"><strong>Musterantwort:</strong> Rogers beschreibt Empathie, Wertschätzung und Kongruenz. Empathie bedeutet, die Perspektive des anderen nachzuvollziehen. Wertschätzung bedeutet, den Menschen als Person anzunehmen. Kongruenz bedeutet, glaubwürdig und echt zu kommunizieren. Diese Haltungen fördern Vertrauen und eine tragfähige therapeutische Beziehung.</div>
-
-      <h3>Aufgabe 3: Erklären Sie aktives Zuhören.</h3>
-      <div class="answer"><strong>Musterantwort:</strong> Aktives Zuhören bedeutet, dem Gesprächspartner aufmerksam zu folgen und Verständnis sichtbar zu machen. Dazu gehören Paraphrasieren, Gefühle spiegeln, offene Fragen, Zusammenfassen, Pausen und zugewandte Körpersprache. Ziel ist nicht Zustimmung, sondern möglichst genaues Verstehen.</div>
-
-      <h3>Aufgabe 4: Wenden Sie die Gewaltfreie Kommunikation an.</h3>
-      <div class="answer"><strong>Musterantwort:</strong> Eine gewaltfreie Aussage enthält Beobachtung, Gefühl, Bedürfnis und Bitte. Beispiel: „In den letzten zwei Terminen wurden die vereinbarten Übungen nicht durchgeführt. Ich bin unsicher, weil mir wichtig ist, dass der Plan zu Ihrem Alltag passt. Können wir gemeinsam prüfen, welche Übung realistisch wäre?“</div>
-
-      <h3>Aufgabe 5: Unterscheiden Sie hilfreiche und hinderliche Kommunikation.</h3>
-      <div class="answer"><strong>Musterantwort:</strong> Hilfreiche Kommunikation ist respektvoll, konkret, verständlich und offen. Sie nutzt Ich-Botschaften, aktives Zuhören und Rückfragen. Hinderliche Kommunikation bewertet, droht, bagatellisiert, unterbricht oder verwendet unverständliche Fachsprache. In der Ergotherapie kann hinderliche Kommunikation Vertrauen und Motivation beeinträchtigen.</div>
-
-      <h3>Aufgabe 6: Leiten Sie eine therapeutische Gesprächsstrategie ab.</h3>
-      <div class="answer"><strong>Musterantwort:</strong> Zuerst sollte die Therapeutin die Belastung des Patienten anerkennen und mit aktivem Zuhören klären. Anschließend wird das Problem gemeinsam konkretisiert. Informationen werden verständlich und in kleinen Einheiten gegeben. Zum Schluss werden eine realistische Vereinbarung und ein überprüfbares Ziel gemeinsam festgelegt.</div>
-
-      <div class="callout lilac"><strong>Antwortschema für Kommunikationsfälle:</strong> 1. Kommunikationsproblem benennen. 2. Passendes Modell nennen. 3. Problem anhand des Modells erklären. 4. Eine bessere Formulierung oder Strategie geben. 5. Wirkung auf Beziehung, Motivation und Therapie begründen.</div>
-    </section>
-  </main>
-
-  <div class="footer">Teil 3 · Kommunikation · erstellt für Moritz</div>
-</div>
-
-  <a class="back-to-top" href="#seitenanfang" aria-label="Zurück zum Seitenanfang">↑ <span>Zum Anfang</span></a>
-
-</body>
-</html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Moritz · Psychologie Teil 3</title>
+<style>
+:root{--ink:#24313f;--muted:#667085;--paper:#fffdf9;--blue:#dceef8;--mint:#dff3e7;--peach:#fde8d7;--lilac:#eee5fa;--yellow:#fff3c9;--rose:#f8e1e8;--line:#d9dee5;--accent:#4f7f8f}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:linear-gradient(180deg,#f7fbfc,#fbfaf6);color:var(--ink);line-height:1.72}.shell{max-width:1040px;margin:auto;padding:24px}.hero,.chapter{background:var(--paper);border:1px solid var(--line);border-radius:28px;box-shadow:0 14px 45px rgba(43,64,80,.08)}.hero{padding:40px}.chapter{padding:clamp(22px,4vw,42px)}h1{font-size:clamp(2.3rem,6vw,4.6rem);line-height:1.02;margin:.2em 0}h2{font-size:clamp(1.9rem,4vw,3rem);line-height:1.15;margin:.1em 0 .7em;position:relative;padding:18px 22px;border:2px solid #c8dde5;border-radius:20px;background:linear-gradient(135deg,var(--blue),#fff)}h2:before{content:"";position:absolute;left:18px;right:18px;bottom:-7px;height:7px;background:var(--mint)}h3{font-size:1.4rem;margin-top:2em;padding:12px 16px;border-left:6px solid var(--accent);border-radius:12px;background:var(--lilac)}h4{display:inline-block;margin:0 0 .35em;padding:5px 10px;border-radius:10px;background:var(--peach)}.eyebrow{letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:var(--accent)}.lead,.intro{font-size:1.12rem}.nav,.page-switcher{display:flex;gap:10px;flex-wrap:wrap}.nav{margin-top:24px}.page-switcher{margin:24px 0;padding:14px;border:1px solid var(--line);border-radius:18px;background:var(--paper)}.nav a,.page-switcher a{padding:10px 15px;border-radius:999px;background:var(--blue);color:var(--ink);text-decoration:none;font-weight:750}.page-switcher a{background:var(--mint)}main{display:grid;gap:28px}.callout{border-left:7px solid var(--accent);padding:18px 20px;border-radius:16px;margin:22px 0}.blue{background:var(--blue)}.mint{background:var(--mint)}.peach{background:var(--peach)}.lilac{background:var(--lilac)}.yellow{background:var(--yellow)}.rose{background:var(--rose)}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.card{border:1px solid var(--line);border-radius:18px;padding:18px;background:#fff}.table-wrap{overflow-x:auto}.compare{width:100%;border-collapse:collapse;margin:16px 0}.compare th,.compare td{border:1px solid var(--line);padding:12px;vertical-align:top}.compare th{background:var(--lilac);text-align:left}.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.step{padding:14px 10px;border-radius:16px;background:var(--blue);text-align:center;font-weight:800}.case{border:2px dashed #aac0c7;border-radius:18px;padding:20px;background:#fbfdfe}.answer{margin-top:14px;padding:16px;border-radius:14px;background:var(--mint)}.summary{background:#f3f7f8;border-radius:18px;padding:20px}.back-to-top{position:fixed;right:18px;bottom:18px;padding:12px 15px;border:1px solid #b8cbd2;border-radius:999px;background:rgba(255,253,249,.96);color:var(--ink);text-decoration:none;font-weight:800;box-shadow:0 10px 28px rgba(43,64,80,.18)}.footer{text-align:center;color:var(--muted);padding:35px 10px 15px}@media(max-width:760px){.flow,.grid{grid-template-columns:1fr}.hero{padding:26px}.shell{padding:12px}}@media print{body{background:#fff}.shell{max-width:none;padding:0}.hero,.chapter{box-shadow:none}.nav,.page-switcher,.back-to-top{display:none}.chapter{page-break-before:always;border:none}.hero{border:none}.footer{display:none}}
+</style></head>
+<body id="seitenanfang"><div class="shell"><header class="hero"><div class="eyebrow">Psychologie · Ergotherapie</div><h1>Teil 3 · Kommunikation</h1><p class="lead">Kommunikation ist die Grundlage einer tragfähigen therapeutischen Beziehung. Dieses Kapitel erklärt Modelle und Gesprächsstrategien mit klaren Beispielen.</p><div class="nav"><a href="#kommunikation">Kapitel 5</a><a href="#fall">Fallbeispiel</a><a href="#klausurtraining">Klausurtraining</a></div></header>
+<nav class="page-switcher"><a href="index.html">Teil 1 · Kapitel 1–2</a><a href="teil2.html">Teil 2 · Kapitel 3–4</a><a href="teil3.html">Teil 3 · Kapitel 5</a></nav><main>
+<section class="chapter" id="kommunikation"><div class="eyebrow">Kapitel 5</div><h2>Kommunikation</h2><p class="intro">Menschen kommunizieren mit Worten, Tonfall, Mimik, Gestik, Körperhaltung und Verhalten. In der Ergotherapie beeinflusst Kommunikation, ob Vertrauen entsteht, Bedürfnisse erkannt und Ziele gemeinsam getragen werden.</p><div class="callout blue"><strong>Definition:</strong> Kommunikation ist ein wechselseitiger Prozess, bei dem Menschen Informationen, Gedanken, Gefühle und Bedeutungen austauschen.</div>
+<h3>5.1 Voraussetzungen gelingender Kommunikation</h3><div class="grid"><div class="card"><h4>Aufmerksamkeit</h4><p>Schmerz, Angst, Müdigkeit oder Reizüberflutung können die Aufnahme erschweren.</p></div><div class="card"><h4>Gemeinsame Zeichen</h4><p>Wörter, Symbole und Gesten müssen ähnlich verstanden werden.</p></div><div class="card"><h4>Beziehung und Vertrauen</h4><p>Menschen sprechen offener, wenn sie sich respektiert und sicher fühlen.</p></div><div class="card"><h4>Rückmeldung</h4><p>Nachfragen und Zusammenfassen zeigen, ob eine Botschaft angekommen ist.</p></div></div><div class="callout yellow"><strong>Merksatz:</strong> Gesagt ist nicht automatisch gehört. Gehört ist nicht automatisch verstanden. Verstanden ist nicht automatisch umgesetzt.</div>
+<h3>5.2 Sender-Empfänger-Modell</h3><div class="flow"><div class="step">Sender<br><small>hat eine Absicht</small></div><div class="step">Codierung & Kanal<br><small>Worte, Schrift, Gestik</small></div><div class="step">Empfänger & Decodierung<br><small>deutet die Nachricht</small></div><div class="step">Rückmeldung<br><small>zeigt Verständnis</small></div></div><p>Der Sender codiert eine Nachricht und übermittelt sie über einen Kanal. Der Empfänger decodiert sie auf Grundlage seiner Erfahrungen, Erwartungen und Gefühle. Störungen können durch Lärm, Fachsprache, Ablenkung, widersprüchlichen Tonfall oder eine belastete Beziehung entstehen.</p><div class="callout peach"><strong>Ergotherapie-Beispiel:</strong> Statt „Das müssen Sie täglich üben“ besser: „Welcher Zeitpunkt wäre für Sie realistisch, und wobei könnte die Übung im Alltag helfen?“</div>
+<h3>5.3 Verbale, paraverbale und nonverbale Kommunikation</h3><div class="grid"><div class="card"><h4>Verbal</h4><p>Gesprochene und geschriebene Wörter.</p></div><div class="card"><h4>Paraverbal</h4><p>Lautstärke, Sprechtempo, Betonung und Pausen.</p></div><div class="card"><h4>Nonverbal</h4><p>Mimik, Gestik, Blickkontakt, Körperhaltung, Abstand und Berührung.</p></div><div class="card"><h4>Kongruenz</h4><p>Die Ebenen wirken glaubwürdig, wenn sie zusammenpassen.</p></div></div><div class="callout rose"><strong>Klausurtipp:</strong> In einem Fall nicht nur den Wortlaut betrachten. Tonfall, Blick, Haltung und Beziehung gehören zur Analyse.</div>
+<h3>5.4 Carl Rogers: personenzentrierte Grundhaltung</h3><div class="grid"><div class="card"><h4>Empathie</h4><p>Die Erlebniswelt des anderen möglichst genau verstehen, ohne vorschnell zu bewerten.</p></div><div class="card"><h4>Bedingungsfreie positive Wertschätzung</h4><p>Die Person unabhängig von Leistung oder Fortschritt respektieren und annehmen.</p></div><div class="card"><h4>Kongruenz/Echtheit</h4><p>Glaubwürdig sein; Worte, Haltung und Verhalten passen zusammen.</p></div><div class="card"><h4>Wirkung</h4><p>Sicherheit, Offenheit, Selbstexploration und Zusammenarbeit werden gefördert.</p></div></div><div class="callout lilac"><strong>Eselsbrücke:</strong> Rogers = verstehen, annehmen, echt sein.</div>
+<h3>5.5 Aktives Zuhören</h3><div class="table-wrap"><table class="compare"><tr><th>Technik</th><th>Beispiel</th></tr><tr><td>Paraphrasieren</td><td>„Sie sagen, dass die Übung morgens zu anstrengend ist.“</td></tr><tr><td>Gefühle spiegeln</td><td>„Das klingt, als wären Sie enttäuscht.“</td></tr><tr><td>Offene Fragen</td><td>„Was würde Ihnen die Durchführung erleichtern?“</td></tr><tr><td>Zusammenfassen</td><td>„Sie möchten üben, brauchen aber eine kürzere Einheit.“</td></tr><tr><td>Klären</td><td>„Was meinen Sie genau mit ‚es klappt nicht‘?“</td></tr><tr><td>Pausen zulassen</td><td>Zeit zum Nachdenken geben, statt sofort weiterzufragen.</td></tr><tr><td>Nonverbale Aufmerksamkeit</td><td>Zugewandte Haltung, angemessener Blickkontakt und ruhiger Ton.</td></tr></table></div><div class="callout mint"><strong>Wichtig:</strong> Aktives Zuhören ist keine mechanische Technik. Es wirkt nur glaubwürdig, wenn echtes Interesse vorhanden ist.</div>
+<h3>5.6 Gewaltfreie Kommunikation nach Rosenberg</h3><div class="flow"><div class="step">1. Beobachtung<br><small>ohne Bewertung</small></div><div class="step">2. Gefühl<br><small>was fühle ich?</small></div><div class="step">3. Bedürfnis<br><small>was ist mir wichtig?</small></div><div class="step">4. Bitte<br><small>konkret und erfüllbar</small></div></div><div class="callout blue"><strong>Vollständiges Beispiel:</strong> „Wenn die Übung nach zwei Minuten abgebrochen wird (Beobachtung), bin ich besorgt (Gefühl), weil mir wichtig ist, dass wir eine passende und hilfreiche Form finden (Bedürfnis). Können wir gemeinsam prüfen, welche Dauer heute machbar ist? (Bitte)“</div><p>Eine Bitte ist keine versteckte Forderung. Die andere Person darf ablehnen oder einen Gegenvorschlag machen.</p>
+<h3>5.7 Hilfreiche und hinderliche Kommunikation</h3><div class="table-wrap"><table class="compare"><tr><th>Hilfreich</th><th>Hinderlich</th></tr><tr><td>Kurze, klare und verständliche Sätze</td><td>Unnötige Fachsprache</td></tr><tr><td>Offene Fragen und echtes Zuhören</td><td>Unterbrechen oder vorschnell beraten</td></tr><tr><td>Ich-Botschaften und konkrete Beobachtungen</td><td>Vorwürfe, Etiketten und Verallgemeinerungen</td></tr><tr><td>Wahlmöglichkeiten und Mitbestimmung</td><td>Druck, Drohung oder moralische Bewertung</td></tr><tr><td>Verständnis überprüfen</td><td>Annehmen, dass Schweigen Zustimmung bedeutet</td></tr></table></div>
+<h3 id="fall">5.8 Fallbeispiel mit Musterlösung</h3><div class="case"><strong>Fall:</strong> Ein Patient verschränkt die Arme, schaut weg und sagt leise: „Ja, dann mache ich das eben.“ Die Therapeutin hatte zuvor gesagt: „Sie müssen sich einfach mehr anstrengen.“<div class="answer"><strong>Musterlösung:</strong> 1. Wortlaut und Körpersprache passen nicht zusammen; der Patient wirkt zurückgezogen. 2. Das lässt sich mit verbal-paraverbal-nonverbaler Kommunikation und dem Sender-Empfänger-Modell erklären. 3. Die Aussage der Therapeutin kann als Vorwurf decodiert werden. 4. Dadurch sinken Sicherheit und Bereitschaft zur Zusammenarbeit. 5. Die Therapeutin sollte den Vorwurf zurücknehmen, empathisch nachfragen, aktiv zuhören und gemeinsam eine realistische Lösung entwickeln, etwa: „Ich merke, dass meine Aussage Druck ausgelöst haben könnte. Was macht die Übung für Sie gerade schwierig?“</div></div>
+<div class="summary"><strong>Das musst du können:</strong> Voraussetzungen von Kommunikation, Sender-Empfänger-Modell, verbale/paraverbale/nonverbale Ebenen, Rogers, aktives Zuhören, Gewaltfreie Kommunikation sowie hilfreiche und hinderliche Gesprächsweisen.</div></section>
+<section class="chapter" id="klausurtraining"><div class="eyebrow">Anwendung</div><h2>Klausurtraining Teil 3</h2><h3>Frage: Erklären Sie die drei Grundhaltungen nach Rogers.</h3><div class="answer">Empathie bedeutet, die Erlebniswelt des anderen zu verstehen. Bedingungsfreie positive Wertschätzung bedeutet, die Person unabhängig von Leistung anzunehmen. Kongruenz bedeutet Echtheit: Worte, Gefühle und Verhalten passen glaubwürdig zusammen.</div><h3>Frage: Formulieren Sie eine Gewaltfreie Kommunikation.</h3><div class="answer">„Wenn vereinbarte Übungen an drei Tagen nicht durchgeführt wurden (Beobachtung), bin ich besorgt (Gefühl), weil mir eine realistische und wirksame Planung wichtig ist (Bedürfnis). Können wir gemeinsam eine kürzere Übung auswählen, die in Ihren Tagesablauf passt? (Bitte)“</div><div class="callout lilac"><strong>Antwortschema:</strong> 1. Kommunikationsauffälligkeit nennen. 2. Modell oder Technik nennen. 3. Kurz erklären. 4. Auf Worte und Körpersprache beziehen. 5. Eine konkrete therapeutische Formulierung oder Handlung ableiten.</div></section>
+</main><div class="footer">Teil 3 · Kommunikation</div></div><a class="back-to-top" href="#seitenanfang">↑ Zum Anfang</a></body></html>
