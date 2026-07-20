@@ -8,8 +8,10 @@ Digitales Lehrbuch zur Vorbereitung auf die Psychologie-Klausur in der Ergothera
   `https://ute263.github.io/Moritz-Psycho/`
 - **Teil 2:** Entwicklungspsychologie sowie Gedächtnis und Emotion  
   `https://ute263.github.io/Moritz-Psycho/teil2.html`
+- **Teil 3:** Kommunikation  
+  `https://ute263.github.io/Moritz-Psycho/teil3.html`
 
-Beide Teile enthalten ausführliche Erklärungen, Beispiele aus dem Alltag und der Ergotherapie, Merkkästen, Fallbeispiele sowie Musterantworten für typische Klausurfragen.
+Alle drei Teile enthalten ausführliche Erklärungen, Beispiele aus dem Alltag und der Ergotherapie, Merkkästen, Fallbeispiele sowie Musterantworten für typische Klausurfragen.
 
 ## GitHub Pages aktivieren
 
