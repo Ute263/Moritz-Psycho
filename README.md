@@ -2,12 +2,14 @@
 
 Digitales Lehrbuch zur Vorbereitung auf die Psychologie-Klausur in der Ergotherapie.
 
-## Enthalten
+## Lehrbuchseiten
 
-- Teil 1: Wahrnehmung
-- Teil 1: Motivation und Volition
-- Ergotherapeutische Fallbeispiele
-- Klausurwissen und Musterantworten
+- **Teil 1:** Wahrnehmung sowie Motivation und Volition  
+  `https://ute263.github.io/Moritz-Psycho/`
+- **Teil 2:** Entwicklungspsychologie sowie Gedächtnis und Emotion  
+  `https://ute263.github.io/Moritz-Psycho/teil2.html`
+
+Beide Teile enthalten ausführliche Erklärungen, Beispiele aus dem Alltag und der Ergotherapie, Merkkästen, Fallbeispiele sowie Musterantworten für typische Klausurfragen.
 
 ## GitHub Pages aktivieren
 
@@ -17,6 +19,4 @@ Digitales Lehrbuch zur Vorbereitung auf die Psychologie-Klausur in der Ergothera
 4. Branch **main** und Ordner **/(root)** auswählen.
 5. **Save** drücken.
 
-Danach ist die Seite unter folgender Adresse erreichbar:
-
-`https://ute263.github.io/Moritz-Psycho/`
+Danach sind die Seiten über die oben genannten Adressen erreichbar.
