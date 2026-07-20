@@ -1,233 +1,34 @@
 <!doctype html>
 <html lang="de">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Moritz · Psychologie lernen</title>
-  <style>
-    :root{--ink:#24313f;--muted:#667085;--paper:#fffdf9;--blue:#dceef8;--mint:#dff3e7;--peach:#fde8d7;--lilac:#eee5fa;--yellow:#fff3c9;--rose:#f8e1e8;--line:#d9dee5;--accent:#4f7f8f}
-    *{box-sizing:border-box} body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:linear-gradient(180deg,#f7fbfc 0%,#fbfaf6 100%);color:var(--ink);line-height:1.72}
-    .shell{max-width:1040px;margin:auto;padding:24px}.hero{background:var(--paper);border:1px solid var(--line);border-radius:28px;padding:40px;box-shadow:0 14px 45px rgba(43,64,80,.08)}
-    h1{font-size:clamp(2.3rem,6vw,4.6rem);line-height:1.02;margin:.2em 0}.eyebrow{letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:var(--accent)}
-    .lead{font-size:1.15rem;max-width:760px}.nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.nav a{padding:10px 15px;border-radius:999px;background:var(--blue);color:var(--ink);text-decoration:none;font-weight:700}
-    main{display:grid;gap:28px;margin-top:28px}.chapter{background:var(--paper);border:1px solid var(--line);border-radius:26px;padding:clamp(22px,4vw,42px)}
-    h2{font-size:clamp(1.9rem,4vw,3rem);line-height:1.15;margin:.1em 0 .7em} h3{font-size:1.4rem;margin-top:2em} h4{font-size:1.1rem;margin-bottom:.35em}
-    .intro{font-size:1.08rem}.callout{border-left:7px solid var(--accent);padding:18px 20px;border-radius:16px;margin:22px 0}.blue{background:var(--blue)}.mint{background:var(--mint)}.peach{background:var(--peach)}.lilac{background:var(--lilac)}.yellow{background:var(--yellow)}.rose{background:var(--rose)}
-    .flow{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;align-items:stretch;margin:22px 0}.step{padding:14px 10px;border-radius:16px;background:var(--blue);text-align:center;font-weight:800}.arrow{display:none}
-    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.card{border:1px solid var(--line);border-radius:18px;padding:18px;background:white}.card h4{margin-top:0}.table-wrap{overflow-x:auto}.compare{width:100%;border-collapse:collapse;margin:16px 0}.compare th,.compare td{border:1px solid var(--line);padding:12px;vertical-align:top}.compare th{background:var(--lilac);text-align:left}
-    .case{border:2px dashed #aac0c7;border-radius:18px;padding:20px;background:#fbfdfe}.answer{margin-top:14px;padding:16px;border-radius:14px;background:var(--mint)}
-    .summary{background:#f3f7f8;border-radius:18px;padding:20px}.stars{font-weight:800;color:#7a5b00}.footer{text-align:center;color:var(--muted);padding:35px 10px 15px}
-    @media(max-width:760px){.flow{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.hero{padding:26px}.shell{padding:12px}.chapter{border-radius:20px}}
-    @media print{body{background:white}.shell{max-width:none;padding:0}.hero,.chapter{box-shadow:none;break-inside:avoid}.nav{display:none}.chapter{page-break-before:always;border:none}.hero{border:none}.footer{display:none}}
-
-    /* Einheitliche Navigation und dekorative Überschriftenrahmen */
-    html{scroll-behavior:smooth}
-    h2{position:relative;padding:18px 22px;border:2px solid #c8dde5;border-radius:20px;background:linear-gradient(135deg,var(--blue),#ffffff);box-shadow:0 7px 18px rgba(79,127,143,.08)}
-    h2::before{content:"";position:absolute;left:18px;right:18px;bottom:-7px;height:7px;border-radius:0 0 10px 10px;background:var(--mint)}
-    h3{padding:12px 16px;border-left:6px solid var(--accent);border-radius:12px;background:var(--lilac);box-shadow:0 3px 10px rgba(79,127,143,.06)}
-    h4{display:inline-block;padding:5px 10px;border-radius:10px;background:var(--peach)}
-    .back-to-top{position:fixed;right:18px;bottom:18px;z-index:50;display:flex;align-items:center;gap:8px;padding:12px 15px;border:1px solid #b8cbd2;border-radius:999px;background:rgba(255,253,249,.96);color:var(--ink);text-decoration:none;font-weight:800;box-shadow:0 10px 28px rgba(43,64,80,.18);backdrop-filter:blur(8px)}
-    .back-to-top:hover{transform:translateY(-2px);background:var(--blue)}
-    .page-switcher{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 24px;padding:14px;border:1px solid var(--line);border-radius:18px;background:var(--paper)}
-    .page-switcher a{padding:9px 13px;border-radius:999px;background:var(--mint);color:var(--ink);text-decoration:none;font-weight:750}
-    @media(max-width:560px){.back-to-top span{display:none}.back-to-top{padding:13px 16px;font-size:1.2rem}h2{padding:15px 17px}h3{padding:10px 13px}}
-    @media print{.back-to-top,.page-switcher{display:none!important}h2,h3{box-shadow:none}}
-
-
-    .book-overview{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:28px 0 10px}
-    .part-card{display:flex;flex-direction:column;gap:7px;min-height:190px;padding:20px;border:1px solid var(--line);border-radius:20px;color:var(--ink);text-decoration:none;transition:transform .18s ease,box-shadow .18s ease}
-    .part-card:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(43,64,80,.12)}
-    .part-card strong{line-height:1.35}.part-card small{margin-top:auto;color:var(--muted)}
-    .part-label{align-self:flex-start;padding:5px 10px;border-radius:999px;background:rgba(255,255,255,.72);font-weight:800}
-    .part-one{background:var(--blue)}.part-two{background:var(--mint)}.part-three{background:var(--lilac)}
-    @media(max-width:760px){.book-overview{grid-template-columns:1fr}.part-card{min-height:auto}}
-    @media print{.book-overview{grid-template-columns:repeat(3,1fr)}}
-
-  </style>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Moritz · Psychologie lernen</title>
+<style>
+:root{--ink:#24313f;--muted:#667085;--paper:#fffdf9;--blue:#dceef8;--mint:#dff3e7;--peach:#fde8d7;--lilac:#eee5fa;--yellow:#fff3c9;--rose:#f8e1e8;--line:#d9dee5;--accent:#4f7f8f}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:linear-gradient(180deg,#f7fbfc,#fbfaf6);color:var(--ink);line-height:1.72}.shell{max-width:1040px;margin:auto;padding:24px}.hero,.chapter{background:var(--paper);border:1px solid var(--line);border-radius:28px;box-shadow:0 14px 45px rgba(43,64,80,.08)}.hero{padding:40px}.chapter{padding:clamp(22px,4vw,42px)}h1{font-size:clamp(2.3rem,6vw,4.6rem);line-height:1.02;margin:.2em 0}h2{font-size:clamp(1.9rem,4vw,3rem);line-height:1.15;margin:.1em 0 .7em;position:relative;padding:18px 22px;border:2px solid #c8dde5;border-radius:20px;background:linear-gradient(135deg,var(--blue),#fff)}h2:before{content:"";position:absolute;left:18px;right:18px;bottom:-7px;height:7px;border-radius:0 0 10px 10px;background:var(--mint)}h3{font-size:1.4rem;margin-top:2em;padding:12px 16px;border-left:6px solid var(--accent);border-radius:12px;background:var(--lilac)}h4{display:inline-block;margin:0 0 .35em;padding:5px 10px;border-radius:10px;background:var(--peach)}.eyebrow{letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:var(--accent)}.lead,.intro{font-size:1.12rem}.nav,.page-switcher{display:flex;gap:10px;flex-wrap:wrap}.nav{margin-top:24px}.page-switcher{margin:24px 0;padding:14px;border:1px solid var(--line);border-radius:18px;background:var(--paper)}.nav a,.page-switcher a{padding:10px 15px;border-radius:999px;background:var(--blue);color:var(--ink);text-decoration:none;font-weight:750}.page-switcher a{background:var(--mint)}main{display:grid;gap:28px}.callout{border-left:7px solid var(--accent);padding:18px 20px;border-radius:16px;margin:22px 0}.blue{background:var(--blue)}.mint{background:var(--mint)}.peach{background:var(--peach)}.lilac{background:var(--lilac)}.yellow{background:var(--yellow)}.rose{background:var(--rose)}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.card{border:1px solid var(--line);border-radius:18px;padding:18px;background:#fff}.table-wrap{overflow-x:auto}.compare{width:100%;border-collapse:collapse;margin:16px 0}.compare th,.compare td{border:1px solid var(--line);padding:12px;vertical-align:top}.compare th{background:var(--lilac);text-align:left}.flow{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin:22px 0}.step{padding:14px 10px;border-radius:16px;background:var(--blue);text-align:center;font-weight:800}.case{border:2px dashed #aac0c7;border-radius:18px;padding:20px;background:#fbfdfe}.answer{margin-top:14px;padding:16px;border-radius:14px;background:var(--mint)}.summary{background:#f3f7f8;border-radius:18px;padding:20px}.book-overview{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:28px 0 10px}.part-card{display:flex;flex-direction:column;gap:7px;min-height:180px;padding:20px;border:1px solid var(--line);border-radius:20px;color:var(--ink);text-decoration:none}.part-card small{margin-top:auto;color:var(--muted)}.part-label{align-self:flex-start;padding:5px 10px;border-radius:999px;background:rgba(255,255,255,.72);font-weight:800}.part-one{background:var(--blue)}.part-two{background:var(--mint)}.part-three{background:var(--lilac)}.back-to-top{position:fixed;right:18px;bottom:18px;padding:12px 15px;border:1px solid #b8cbd2;border-radius:999px;background:rgba(255,253,249,.96);color:var(--ink);text-decoration:none;font-weight:800;box-shadow:0 10px 28px rgba(43,64,80,.18)}.footer{text-align:center;color:var(--muted);padding:35px 10px 15px}@media(max-width:760px){.flow,.grid,.book-overview{grid-template-columns:1fr}.hero{padding:26px}.shell{padding:12px}.part-card{min-height:auto}}@media print{body{background:#fff}.shell{max-width:none;padding:0}.hero,.chapter{box-shadow:none}.nav,.page-switcher,.back-to-top{display:none}.chapter{page-break-before:always;border:none}.hero{border:none}.footer{display:none}}
+</style>
 </head>
-<body id="seitenanfang">
-<div class="shell">
-  <header class="hero">
-    <div class="eyebrow">Psychologie · Ergotherapie</div>
-    <h1>Moritz’ digitales Lehrbuch</h1>
-    <p class="lead">Dieses Lehrbuch umfasst alle fünf klausurrelevanten Themen. Die Inhalte sind in drei übersichtliche Teile gegliedert und werden verständlich, fachlich korrekt und mit direktem Bezug zur Ergotherapie erklärt.</p>
-
-    <div class="book-overview" aria-label="Kapitelübersicht">
-      <a class="part-card part-one" href="#wahrnehmung">
-        <span class="part-label">Teil 1</span>
-        <strong>Kapitel 1 · Wahrnehmung</strong>
-        <strong>Kapitel 2 · Motivation und Volition</strong>
-        <small>Auf dieser Startseite</small>
-      </a>
-      <a class="part-card part-two" href="teil2.html">
-        <span class="part-label">Teil 2</span>
-        <strong>Kapitel 3 · Entwicklungspsychologie</strong>
-        <strong>Kapitel 4 · Gedächtnis und Emotion</strong>
-        <small>Zur zweiten Lehrbuchseite</small>
-      </a>
-      <a class="part-card part-three" href="teil3.html">
-        <span class="part-label">Teil 3</span>
-        <strong>Kapitel 5 · Kommunikation</strong>
-        <small>Zur dritten Lehrbuchseite</small>
-      </a>
-    </div>
-
-    <div class="nav"><a href="#wahrnehmung">Kapitel 1</a><a href="#motivation">Kapitel 2</a><a href="#klausurtraining">Klausurtraining Teil 1</a></div>
-  </header>
-
-
-  <nav class="page-switcher" aria-label="Lehrbuchteile">
-    <a href="index.html">Start & Teil 1 · Kapitel 1–2</a>
-    <a href="teil2.html">Teil 2 · Kapitel 3–4</a>
-    <a href="teil3.html">Teil 3 · Kapitel 5</a>
-  </nav>
-
-  <main>
-    <section class="chapter" id="wahrnehmung">
-      <div class="eyebrow">Kapitel 1</div>
-      <h2>Wahrnehmung</h2>
-      <p class="intro">Wahrnehmung klingt zunächst selbstverständlich: Wir sehen, hören, riechen, schmecken und fühlen. Psychologisch betrachtet ist Wahrnehmung jedoch viel mehr als die bloße Aufnahme eines Reizes. Unser Gehirn wählt Informationen aus, ordnet sie ein, vergleicht sie mit früheren Erfahrungen und gibt ihnen eine Bedeutung. Erst dadurch entsteht das, was wir als Wirklichkeit erleben.</p>
-
-      <div class="callout blue"><strong>Definition:</strong> Wahrnehmung ist der Prozess, bei dem Reize aus der Umwelt oder aus dem eigenen Körper aufgenommen, verarbeitet, geordnet und interpretiert werden. Das Ergebnis ist ein subjektives Bild der Wirklichkeit.</div>
-
-      <h3>1.1 Warum brauchen wir Wahrnehmung?</h3>
-      <p>Ohne Wahrnehmung könnten wir uns nicht orientieren, Gefahren erkennen, Handlungen planen oder mit anderen Menschen in Kontakt treten. Schon einfache Alltagshandlungen setzen viele Wahrnehmungsschritte voraus. Beim Überqueren einer Straße müssen wir beispielsweise Autos sehen, deren Geschwindigkeit einschätzen, Motorengeräusche hören, unsere Aufmerksamkeit auf den Verkehr richten und entscheiden, ob wir gehen oder warten.</p>
-      <p>Wahrnehmung ist deshalb eine Grundlage fast jeder Handlung. Sie verbindet die Außenwelt mit unserem Erleben und unserem Verhalten. Gleichzeitig nimmt der Mensch niemals alle vorhandenen Reize bewusst wahr. Das Gehirn filtert. Es entscheidet fortlaufend, was gerade wichtig ist und was im Hintergrund bleiben kann.</p>
-
-      <h3>1.2 Der Ablauf: Reiz – Verarbeitung – Reaktion</h3>
-      <div class="flow">
-        <div class="step">1. Reiz</div><div class="step">2. Sinnesorgan</div><div class="step">3. Weiterleitung</div><div class="step">4. Verarbeitung</div><div class="step">5. Interpretation</div><div class="step">6. Reaktion</div>
-      </div>
-      <h4>1. Reiz</h4><p>Ein Reiz ist eine physikalische oder chemische Veränderung, die auf einen Sinnesrezeptor einwirkt. Lichtwellen reizen das Auge, Schallwellen das Ohr, Druck oder Temperatur die Haut. Auch Reize aus dem Körperinneren gehören dazu, zum Beispiel Hunger, Durst, Schmerz oder das Gefühl, dass die Blase gefüllt ist.</p>
-      <h4>2. Aufnahme durch ein Sinnesorgan</h4><p>Sinnesorgane enthalten spezialisierte Rezeptoren. Sie reagieren auf bestimmte Reizarten und wandeln diese in elektrische Signale um. Das Auge reagiert auf Licht, das Ohr auf Schall, die Haut unter anderem auf Druck, Wärme, Kälte und Schmerz.</p>
-      <h4>3. Weiterleitung</h4><p>Die entstandenen Signale werden über Nervenbahnen zum Gehirn weitergeleitet. In diesem Schritt liegt noch keine bewusste Bedeutung vor. Es handelt sich zunächst nur um Informationen.</p>
-      <h4>4. Verarbeitung</h4><p>Im Gehirn werden Informationen geordnet, gefiltert und miteinander verbunden. Das Gehirn entscheidet, welche Reize wichtig sind. Es verbindet aktuelle Informationen außerdem mit gespeichertem Wissen.</p>
-      <h4>5. Interpretation</h4><p>Nun erhält der Reiz eine Bedeutung. Ein lauter Knall kann als platzender Luftballon, zuschlagende Tür oder Gefahr interpretiert werden. Welche Bedeutung entsteht, hängt von Erfahrung, Erwartung, Stimmung und Situation ab.</p>
-      <h4>6. Reaktion</h4><p>Auf Grundlage der Interpretation reagiert der Mensch. Die Reaktion kann körperlich, emotional oder handelnd sein: zusammenzucken, Angst empfinden, sich umdrehen oder den Raum verlassen.</p>
-
-      <div class="callout yellow"><strong>Merksatz:</strong> Nicht der Reiz allein bestimmt unser Verhalten, sondern die Bedeutung, die unser Gehirn ihm gibt.</div>
-
-      <h3>1.3 Warum ist Wahrnehmung subjektiv?</h3>
-      <p>Subjektiv bedeutet, dass Wahrnehmung von der jeweiligen Person abhängt. Menschen nehmen dieselbe Situation nicht zwangsläufig gleich wahr. Das Gehirn arbeitet nicht wie eine Kamera. Es zeichnet die Welt nicht neutral auf, sondern wählt aus und deutet.</p>
-      <div class="grid">
-        <div class="card"><h4>Erfahrungen</h4><p>Frühere Erlebnisse beeinflussen, wie neue Situationen bewertet werden. Wer als Kind von einem Hund gebissen wurde, kann einen freundlichen Hund schneller als Gefahr wahrnehmen.</p></div>
-        <div class="card"><h4>Erwartungen</h4><p>Wer etwas Bestimmtes erwartet, richtet seine Wahrnehmung stärker darauf. Erwartet ein Patient Schmerzen, kann er körperliche Empfindungen intensiver beachten.</p></div>
-        <div class="card"><h4>Aufmerksamkeit</h4><p>Aufmerksamkeit wirkt wie ein Scheinwerfer. Was im Mittelpunkt steht, wird genauer verarbeitet. Andere Reize werden abgeschwächt oder gar nicht bewusst registriert.</p></div>
-        <div class="card"><h4>Emotionen</h4><p>Angst, Freude, Traurigkeit oder Ärger verändern die Wahrnehmung. Unter Angst werden mehrdeutige Situationen eher bedrohlich gedeutet.</p></div>
-        <div class="card"><h4>Motivation und Bedürfnisse</h4><p>Hungrige Menschen bemerken Essensgerüche schneller. Wer ein bestimmtes Ziel verfolgt, nimmt zielrelevante Informationen stärker wahr.</p></div>
-        <div class="card"><h4>Kultur und soziale Prägung</h4><p>Kulturelle Regeln beeinflussen, was als höflich, auffällig oder bedrohlich erlebt wird. Wahrnehmung entsteht also auch im sozialen Kontext.</p></div>
-      </div>
-
-      <h3>1.4 Wahrnehmungsfehler und begrenzte Aufmerksamkeit</h3>
-      <p>Weil das Gehirn Informationen reduziert und ergänzt, kann Wahrnehmung fehlerhaft sein. Das ist keine Ausnahme, sondern eine normale Folge der Informationsverarbeitung. Wir übersehen Dinge, wenn unsere Aufmerksamkeit gebunden ist. Wir ergänzen fehlende Informationen auf Grundlage von Erwartungen. Außerdem beurteilen wir Personen oft vorschnell nach ersten Eindrücken.</p>
-      <p>Für die Ergotherapie ist wichtig, Wahrnehmungsfehler nicht als Absicht zu bewerten. Ein Patient kann eine Anweisung tatsächlich anders verstanden oder eine wichtige Information nicht beachtet haben. Eine therapeutische Situation sollte deshalb klar strukturiert sein und Rückfragen ermöglichen.</p>
-
-      <h3>1.5 Bedeutung der Wahrnehmung für die Ergotherapie</h3>
-      <p>Ergotherapie hat das Ziel, Menschen bei bedeutsamen Alltagsaktivitäten zu unterstützen. Dafür muss die Therapeutin oder der Therapeut verstehen, wie ein Patient seinen Körper, seine Umwelt und eine Aufgabe wahrnimmt. Wahrnehmungsprobleme können Bewegungen, Lernen, Kommunikation, Selbstversorgung und Sicherheit beeinflussen.</p>
-      <div class="grid">
-        <div class="card"><h4>Neurologie</h4><p>Nach einem Schlaganfall können Körperteile oder eine Raumhälfte weniger beachtet werden. Ein Patient stößt dann möglicherweise an Gegenstände, obwohl seine Augen grundsätzlich funktionieren.</p></div>
-        <div class="card"><h4>Pädiatrie</h4><p>Kinder können auf Geräusche, Berührungen oder Bewegung besonders empfindlich reagieren. Für Außenstehende wirkt das Verhalten vielleicht unangemessen, für das Kind ist der Reiz jedoch tatsächlich sehr belastend.</p></div>
-        <div class="card"><h4>Psychiatrie</h4><p>Angst oder Depression verändern die Bewertung von Situationen. Neutrale Reaktionen anderer Menschen können beispielsweise als Ablehnung erlebt werden.</p></div>
-        <div class="card"><h4>Geriatrie</h4><p>Bei Demenz können bekannte Reize nicht mehr sicher eingeordnet werden. Ein alltäglicher Gegenstand verliert seine vertraute Bedeutung oder eine Umgebung wirkt plötzlich fremd.</p></div>
-      </div>
-      <div class="callout mint"><strong>Therapeutische Konsequenz:</strong> Reize dosieren, Aufgaben klar strukturieren, mehrere Sinne sinnvoll nutzen, genügend Zeit geben, Rückmeldung einholen und die subjektive Sicht des Patienten ernst nehmen.</div>
-
-      <h3>1.6 Fallbeispiel mit Musterlösung</h3>
-      <div class="case"><strong>Fall:</strong> Ein Patient nach einem Schlaganfall stößt während des Anziehens wiederholt mit dem linken Arm an den Türrahmen. Er sagt, alles sei in Ordnung und er merke kein Problem.
-        <div class="answer"><strong>Musterlösung:</strong> Der Patient könnte Reize von der linken Körper- oder Raumseite unzureichend verarbeiten. Entscheidend ist, dass das Problem nicht einfach als Unachtsamkeit bewertet wird. Ergotherapeutisch könnten visuelle Markierungen, gezielte Suchbewegungen, eine bewusste Ausrichtung zur linken Seite und wiederholte Rückmeldungen helfen. Die Aufgabe muss so gestaltet werden, dass der Patient die betroffene Seite zunehmend einbezieht.</div>
-      </div>
-
-      <h3>1.7 Klausurwissen</h3>
-      <div class="summary"><span class="stars">★★★</span> Sicher erklären können: Definition der Wahrnehmung, Ablauf Reiz–Verarbeitung–Reaktion, Subjektivität der Wahrnehmung, mindestens drei Einflussfaktoren und die Bedeutung für die Ergotherapie.</div>
-    </section>
-
-    <section class="chapter" id="motivation">
-      <div class="eyebrow">Kapitel 2</div>
-      <h2>Motivation und Volition</h2>
-      <p class="intro">Motivation erklärt, warum Menschen eine Handlung beginnen, ein Ziel auswählen und Energie einsetzen. Volition erklärt, wie sie trotz Schwierigkeiten an einer Handlung festhalten. In der Ergotherapie ist beides zentral, weil therapeutische Übungen nur dann wirksam werden, wenn ein Patient sie versteht, akzeptiert und möglichst aktiv mitträgt.</p>
-
-      <h3>2.1 Motiv, Motivation und Volition</h3>
-      <div class="table-wrap"><table class="compare"><tr><th>Begriff</th><th>Bedeutung</th><th>Beispiel</th></tr><tr><td><strong>Motiv</strong></td><td>Relativ stabiler Beweggrund oder ein Bedürfnis.</td><td>Ein Mensch möchte selbstständig bleiben.</td></tr><tr><td><strong>Motivation</strong></td><td>Aktueller Zustand, der Verhalten auslöst, lenkt und mit Energie versorgt.</td><td>Der Patient beginnt heute die Übung, weil er wieder allein kochen möchte.</td></tr><tr><td><strong>Volition</strong></td><td>Willentliche Steuerung, die hilft, ein Ziel trotz Hindernissen weiterzuverfolgen.</td><td>Der Patient übt weiter, obwohl der Fortschritt langsam ist.</td></tr></table></div>
-      <div class="callout peach"><strong>Eselsbrücke:</strong> Motivation bringt dich zum Start. Volition bringt dich durch schwierige Phasen bis ins Ziel.</div>
-
-      <h3>2.2 Intrinsische und extrinsische Motivation</h3>
-      <p><strong>Intrinsische Motivation</strong> entsteht aus der Tätigkeit selbst. Eine Person handelt, weil sie Interesse, Freude oder persönliche Bedeutung erlebt. <strong>Extrinsische Motivation</strong> entsteht durch äußere Folgen, etwa Lob, Belohnung, Anerkennung oder das Vermeiden negativer Konsequenzen.</p>
-      <p>Beide Formen können zusammenwirken. In der Ergotherapie ist intrinsische Motivation besonders wertvoll, weil sie oft stabiler ist. Deshalb werden Ziele möglichst an den Alltag, die Interessen und die Lebensrollen des Patienten angeknüpft. Eine Person übt Feinmotorik möglicherweise lieber beim Kochen als mit abstrakten Steckübungen, weil Kochen für sie persönlich bedeutsam ist.</p>
-
-      <h3>2.3 Die Bedürfnispyramide nach Maslow</h3>
-      <p>Maslow ordnet menschliche Bedürfnisse hierarchisch. Die Grundidee lautet: Bedürfnisse auf unteren Ebenen verlangen häufig zuerst Aufmerksamkeit, bevor höhere Ziele stark motivieren. Die Pyramide ist jedoch kein starres Gesetz. Menschen können auch bei unerfüllten Grundbedürfnissen nach Anerkennung oder Sinn streben.</p>
-      <div class="grid">
-        <div class="card"><h4>1. Physiologische Bedürfnisse</h4><p>Essen, Trinken, Schlaf, Wärme, Atmung und körperliches Wohlbefinden. Wer Schmerzen, Hunger oder starke Müdigkeit erlebt, kann sich schwer auf Therapie konzentrieren.</p></div>
-        <div class="card"><h4>2. Sicherheitsbedürfnisse</h4><p>Schutz, Stabilität, Verlässlichkeit und Orientierung. Klare Abläufe und vorhersehbare Aufgaben können Sicherheit geben.</p></div>
-        <div class="card"><h4>3. Soziale Bedürfnisse</h4><p>Zugehörigkeit, Beziehung, Freundschaft und Akzeptanz. Eine vertrauensvolle therapeutische Beziehung kann Motivation fördern.</p></div>
-        <div class="card"><h4>4. Wertschätzung</h4><p>Anerkennung, Selbstachtung, Kompetenz und das Gefühl, etwas zu können. Ehrliches Feedback und sichtbare Fortschritte sind wichtig.</p></div>
-        <div class="card"><h4>5. Selbstverwirklichung</h4><p>Eigene Fähigkeiten entfalten, persönliche Ziele erreichen und sinnvolle Lebensgestaltung. Therapie kann helfen, wieder bedeutsame Rollen einzunehmen.</p></div>
-      </div>
-      <div class="callout yellow"><strong>Ergotherapeutischer Blick:</strong> Ein Therapieziel motiviert nur dann, wenn grundlegende Belastungen mitbedacht werden. Ein Patient mit starken Schmerzen oder großer Angst benötigt möglicherweise zuerst Entlastung und Sicherheit.</div>
-
-      <h3>2.4 Die Motivationstheorie nach McClelland</h3>
-      <p>McClelland beschreibt drei wichtige sozial erlernte Motive. Menschen unterscheiden sich darin, welches Motiv besonders stark ausgeprägt ist.</p>
-      <div class="grid">
-        <div class="card"><h4>Leistungsmotiv</h4><p>Wunsch, Aufgaben gut zu bewältigen, sich zu verbessern und Kompetenz zu erleben. Hilfreich sind klare, realistische Ziele und sichtbarer Fortschritt.</p></div>
-        <div class="card"><h4>Machtmotiv</h4><p>Wunsch, Einfluss zu nehmen, Verantwortung zu übernehmen oder Situationen zu steuern. In der Therapie kann Mitentscheidung wichtig sein.</p></div>
-        <div class="card"><h4>Anschlussmotiv</h4><p>Wunsch nach Zugehörigkeit, Beziehung und sozialer Anerkennung. Eine unterstützende Beziehung oder Gruppentherapie kann motivierend wirken.</p></div>
-      </div>
-      <p>In der Praxis sollte die Therapeutin erkennen, welches Motiv einen Patienten besonders anspricht. Ein leistungsorientierter Patient reagiert möglicherweise gut auf messbare Fortschritte. Ein anschlussorientierter Patient profitiert stärker von gemeinsamer Aktivität.</p>
-
-      <h3>2.5 Das Modell von Porter und Lawler</h3>
-      <p>Porter und Lawler beschreiben Motivation nicht als einfache Kette „Belohnung führt automatisch zu Leistung“. Entscheidend ist vielmehr, wie wertvoll eine Belohnung für die Person ist und wie wahrscheinlich sie glaubt, dass Anstrengung tatsächlich zu guter Leistung führt.</p>
-      <p>Der Ablauf lässt sich vereinfacht so erklären: Eine Person bewertet zunächst den Wert eines möglichen Ergebnisses. Danach schätzt sie ein, ob sich Anstrengung lohnt. Leistung hängt dann nicht nur von Anstrengung ab, sondern auch von Fähigkeiten, Wissen und Rollenverständnis. Auf die Leistung folgen innere oder äußere Belohnungen. Erst wenn diese als passend und gerecht erlebt werden, entsteht Zufriedenheit.</p>
-      <div class="callout blue"><strong>Beispiel:</strong> Ein Patient wird sich eher anstrengen, wenn er glaubt, dass die Übung tatsächlich dazu beiträgt, wieder selbstständig zur Arbeit zu fahren. Ist der Zusammenhang für ihn unklar, sinkt die Motivation.</div>
-
-      <h3>2.6 Grundidee der PSI-Theorie nach Julius Kuhl</h3>
-      <p>PSI steht für Persönlichkeits-System-Interaktionen. Die Theorie erklärt, dass menschliches Handeln aus dem Zusammenspiel verschiedener psychischer Systeme entsteht. Vereinfacht kann man vier Funktionsbereiche unterscheiden: das Wahrnehmen einzelner Details, das ganzheitliche Fühlen und Erinnern, das bewusste Planen sowie die intuitive Ausführung von Handlungen.</p>
-      <p>Unter Belastung kann der Wechsel zwischen diesen Systemen erschwert sein. Manche Menschen bleiben beispielsweise im Grübeln und Planen hängen, beginnen aber nicht. Andere handeln vorschnell, ohne ausreichend zu planen. Selbststeuerung bedeutet, je nach Situation zwischen den Systemen wechseln zu können.</p>
-      <div class="grid">
-        <div class="card"><h4>Planen</h4><p>Ziele setzen, Schritte überlegen, Schwierigkeiten vorhersehen.</p></div>
-        <div class="card"><h4>Handeln</h4><p>Absichten tatsächlich umsetzen und Routinen ausführen.</p></div>
-        <div class="card"><h4>Fühlen und Selbstzugang</h4><p>Eigene Bedürfnisse, Erfahrungen und Werte einbeziehen.</p></div>
-        <div class="card"><h4>Fehler- und Detailwahrnehmung</h4><p>Abweichungen, Probleme und einzelne Informationen genau erkennen.</p></div>
-      </div>
-      <p>Für die Ergotherapie bedeutet das: Ein Patient braucht nicht immer mehr Motivation im allgemeinen Sinn. Vielleicht fehlen ein klarer Plan, der Zugang zur persönlichen Bedeutung, eine geeignete Handlungsroutine oder Unterstützung beim Umgang mit negativen Gefühlen.</p>
-
-      <h3>2.7 Motivation in der Ergotherapie fördern</h3>
-      <p>Motivation lässt sich nicht einfach „verordnen“. Therapeutinnen können aber Bedingungen schaffen, unter denen Motivation wahrscheinlicher wird. Besonders wichtig sind persönliche Bedeutsamkeit, Selbstbestimmung, realistische Anforderungen und Erfolgserlebnisse.</p>
-      <div class="grid">
-        <div class="card"><h4>Bedeutsame Ziele</h4><p>Nicht nur „Handkraft verbessern“, sondern „wieder selbstständig eine Flasche öffnen“.</p></div>
-        <div class="card"><h4>Mitbestimmung</h4><p>Der Patient beteiligt sich an Zielwahl, Reihenfolge und Auswahl von Aktivitäten.</p></div>
-        <div class="card"><h4>Passende Schwierigkeit</h4><p>Die Aufgabe soll fordern, aber nicht überfordern. Zu leichte Aufgaben langweilen, zu schwere führen zu Misserfolg.</p></div>
-        <div class="card"><h4>Rückmeldung</h4><p>Konkretes Feedback zeigt, was bereits gelingt und welcher nächste Schritt sinnvoll ist.</p></div>
-        <div class="card"><h4>Erfolg sichtbar machen</h4><p>Kleine Fortschritte dokumentieren und mit dem Alltag verbinden.</p></div>
-        <div class="card"><h4>Hindernisse bearbeiten</h4><p>Schmerzen, Angst, Erschöpfung, Scham oder unklare Ziele müssen ernst genommen werden.</p></div>
-      </div>
-
-      <h3>2.8 Fallbeispiel mit Musterlösung</h3>
-      <div class="case"><strong>Fall:</strong> Eine Patientin soll nach einer Handverletzung täglich Bewegungsübungen durchführen. Sie sagt: „Diese Übungen bringen doch sowieso nichts“ und lässt sie häufig aus.
-        <div class="answer"><strong>Musterlösung:</strong> Die Aussage zeigt eine geringe Erwartung, dass Anstrengung zu einem wertvollen Ergebnis führt. Das passt zum Modell von Porter und Lawler. Die Therapeutin sollte den Zusammenhang zwischen Übung und alltagsrelevantem Ziel verständlich machen, ein persönlich bedeutsames Ziel auswählen, die Übung anpassen und kleine Fortschritte sichtbar machen. Zusätzlich kann geprüft werden, ob Schmerzen, Überforderung oder mangelnde Selbstwirksamkeit die Motivation beeinträchtigen.</div>
-      </div>
-
-      <h3>2.9 Klausurwissen</h3>
-      <div class="summary"><span class="stars">★★★</span> Sicher unterscheiden: Motiv, Motivation und Volition. Maslows Ebenen erklären, McClellands drei Motive kennen, Porter & Lawler in Grundzügen darstellen, die PSI-Theorie verständlich zusammenfassen und alle Modelle auf ergotherapeutische Situationen übertragen.</div>
-    </section>
-
-    <section class="chapter" id="klausurtraining">
-      <div class="eyebrow">Anwendung</div>
-      <h2>Klausurtraining mit Musterantworten</h2>
-      <h3>Aufgabe 1: Erklären Sie, warum Wahrnehmung subjektiv ist.</h3>
-      <div class="answer"><strong>Musterantwort:</strong> Wahrnehmung ist subjektiv, weil Reize nicht neutral abgebildet, sondern im Gehirn ausgewählt und interpretiert werden. Erfahrungen, Erwartungen, Aufmerksamkeit, Emotionen, Bedürfnisse und kulturelle Prägungen beeinflussen diese Verarbeitung. Deshalb können zwei Personen denselben Reiz unterschiedlich deuten und unterschiedlich reagieren.</div>
-      <h3>Aufgabe 2: Unterscheiden Sie Motiv, Motivation und Volition.</h3>
-      <div class="answer"><strong>Musterantwort:</strong> Ein Motiv ist ein relativ stabiler Beweggrund, etwa das Bedürfnis nach Selbstständigkeit. Motivation bezeichnet den aktuellen Zustand, der eine Handlung auslöst und lenkt. Volition bezeichnet die willentliche Steuerung, durch die eine Person trotz Schwierigkeiten an einem Ziel festhält.</div>
-      <h3>Aufgabe 3: Wenden Sie Maslow auf eine ergotherapeutische Situation an.</h3>
-      <div class="answer"><strong>Musterantwort:</strong> Ein Patient mit starken Schmerzen und Schlafmangel hat zunächst belastete physiologische Grundbedürfnisse. Er kann sich deshalb möglicherweise nur schwer auf komplexe Therapieziele konzentrieren. Ergotherapeutisch sollten Belastung und Sicherheit zuerst berücksichtigt werden, bevor höhere Ziele wie Leistung, Anerkennung oder Selbstverwirklichung im Mittelpunkt stehen.</div>
-      <h3>Aufgabe 4: Leiten Sie Maßnahmen zur Motivationsförderung ab.</h3>
-      <div class="answer"><strong>Musterantwort:</strong> Die Therapeutin sollte ein persönlich bedeutsames und erreichbares Ziel gemeinsam mit dem Patienten festlegen. Die Aufgabe muss zur Fähigkeit passen, Erfolgserlebnisse ermöglichen und einen erkennbaren Bezug zum Alltag haben. Konkrete Rückmeldungen, Mitbestimmung und das Bearbeiten von Hindernissen wie Schmerz oder Angst können Motivation und Volition stärken.</div>
-      <div class="callout lilac"><strong>Antwortschema für Fallbeispiele:</strong> 1. Auffälligkeit im Fall benennen. 2. Passenden psychologischen Begriff oder das Modell nennen. 3. Das Modell kurz erklären. 4. Auf die konkrete Situation beziehen. 5. Eine passende ergotherapeutische Konsequenz begründen.</div>
-    </section>
-  </main>
-  <div class="footer">Teil 1 · Wahrnehmung und Motivation · erstellt für Moritz</div>
-</div>
-
-  <a class="back-to-top" href="#seitenanfang" aria-label="Zurück zum Seitenanfang">↑ <span>Zum Anfang</span></a>
-
-</body>
-</html>
+<body id="seitenanfang"><div class="shell">
+<header class="hero"><div class="eyebrow">Psychologie · Ergotherapie</div><h1>Moritz’ digitales Lehrbuch</h1><p class="lead">Fünf klausurrelevante Themen in drei Teilen: verständlich erklärt, mit Ergotherapie-Bezug, Fallbeispielen, Musterlösungen und Klausurtipps.</p>
+<div class="book-overview"><a class="part-card part-one" href="#wahrnehmung"><span class="part-label">Teil 1</span><strong>Kapitel 1 · Wahrnehmung</strong><strong>Kapitel 2 · Motivation und Volition</strong><small>Auf dieser Seite</small></a><a class="part-card part-two" href="teil2.html"><span class="part-label">Teil 2</span><strong>Kapitel 3 · Entwicklungspsychologie</strong><strong>Kapitel 4 · Gedächtnis und Emotion</strong><small>Zur zweiten Seite</small></a><a class="part-card part-three" href="teil3.html"><span class="part-label">Teil 3</span><strong>Kapitel 5 · Kommunikation</strong><small>Zur dritten Seite</small></a></div>
+<div class="nav"><a href="#wahrnehmung">Kapitel 1</a><a href="#motivation">Kapitel 2</a><a href="#klausurtraining">Klausurtraining</a></div></header>
+<nav class="page-switcher"><a href="index.html">Start & Teil 1</a><a href="teil2.html">Teil 2 · Kapitel 3–4</a><a href="teil3.html">Teil 3 · Kapitel 5</a></nav>
+<main>
+<section class="chapter" id="wahrnehmung"><div class="eyebrow">Kapitel 1</div><h2>Wahrnehmung</h2><p class="intro">Wahrnehmung ist keine Kameraaufnahme. Das Gehirn wählt Reize aus, ordnet sie ein und gibt ihnen eine Bedeutung. Deshalb erleben Menschen dieselbe Situation oft unterschiedlich.</p>
+<div class="callout blue"><strong>Definition:</strong> Wahrnehmung ist der Prozess, bei dem Reize aus Umwelt und Körper aufgenommen, weitergeleitet, verarbeitet und gedeutet werden. Das Ergebnis ist ein subjektives Bild der Wirklichkeit.</div>
+<h3>1.1 Ablauf: Reiz – Verarbeitung – Reaktion</h3><div class="flow"><div class="step">1. Reiz</div><div class="step">2. Sinnesorgan</div><div class="step">3. Weiterleitung</div><div class="step">4. Verarbeitung</div><div class="step">5. Deutung</div><div class="step">6. Reaktion</div></div><p>Beispiel: Eine heiße Tasse reizt Wärme- und Schmerzrezeptoren. Nerven leiten Signale zum Gehirn. Dort werden sie als „zu heiß“ gedeutet. Die Hand wird zurückgezogen.</p>
+<h3>1.2 Arten der Wahrnehmung</h3><div class="grid"><div class="card"><h4>Exterozeptiv</h4><p>Reize aus der Umwelt: Sehen, Hören, Riechen, Schmecken und Tasten.</p></div><div class="card"><h4>Interozeptiv</h4><p>Reize aus dem Körperinneren, etwa Hunger, Durst, Herzklopfen oder Harndrang.</p></div><div class="card"><h4>Propriozeptiv</h4><p>Informationen aus Muskeln, Sehnen und Gelenken. Sie helfen, Stellung, Kraft und Bewegung des Körpers zu spüren.</p></div><div class="card"><h4>Vestibulär</h4><p>Der Gleichgewichtssinn im Innenohr meldet Lage, Beschleunigung und Bewegung des Kopfes.</p></div></div>
+<div class="callout mint"><strong>Ergotherapie-Bezug:</strong> Propriozeption unterstützt dosierte Kraft und sichere Bewegungen. Das vestibuläre System ist wichtig für Gleichgewicht, Haltung und Orientierung. Störungen können Anziehen, Schreiben, Treppensteigen oder Spielen erschweren.</div>
+<h3>1.3 Warum Wahrnehmung subjektiv ist</h3><div class="grid"><div class="card"><h4>Erfahrung</h4><p>Frühere Erlebnisse prägen Deutungen.</p></div><div class="card"><h4>Erwartung</h4><p>Wir achten stärker auf das, womit wir rechnen.</p></div><div class="card"><h4>Aufmerksamkeit</h4><p>Sie wirkt wie ein Scheinwerfer.</p></div><div class="card"><h4>Bedürfnisse und Motivation</h4><p>Zielrelevante Reize fallen schneller auf.</p></div><div class="card"><h4>Emotionen</h4><p>Angst lässt Mehrdeutiges eher bedrohlich wirken.</p></div><div class="card"><h4>Kultur und Körperzustand</h4><p>Prägung, Schmerzen, Müdigkeit oder Stress verändern die Verarbeitung.</p></div></div>
+<h3>1.4 Typische Wahrnehmungsfehler</h3><div class="table-wrap"><table class="compare"><tr><th>Effekt</th><th>Einfach erklärt</th><th>Beispiel</th></tr><tr><td>Selektive Wahrnehmung</td><td>Nur ein Teil der Reize wird beachtet.</td><td>Bei einer Aufgabe werden Nebengeräusche ausgeblendet.</td></tr><tr><td>Halo-Effekt</td><td>Ein auffälliges Merkmal überstrahlt die Gesamtbeurteilung.</td><td>Eine freundliche Person wird vorschnell auch für besonders zuverlässig gehalten.</td></tr><tr><td>Primacy-Effekt</td><td>Der erste Eindruck wirkt besonders stark.</td><td>Ein schlechter Therapiebeginn prägt die spätere Bewertung.</td></tr><tr><td>Recency-Effekt</td><td>Die zuletzt erhaltene Information bleibt besonders präsent.</td><td>Ein Fehler am Ende überlagert viele vorherige Erfolge.</td></tr></table></div><div class="callout yellow"><strong>Klausurtipp:</strong> Diese Effekte sind eine Vertiefung. Der Kern bleibt: Wahrnehmung ist Auswahl und Deutung von Reizen.</div>
+<h3>1.5 Fallbeispiel</h3><div class="case"><strong>Fall:</strong> Ein Patient nach Schlaganfall stößt beim Anziehen mit dem linken Arm an den Türrahmen und bemerkt das Problem kaum.<div class="answer"><strong>Musterlösung:</strong> 1. Auffällig ist die geringe Beachtung der linken Körper- oder Raumseite. 2. Das spricht für eine Störung der Wahrnehmungsverarbeitung, möglicherweise einen Neglect. 3. Reize werden links nicht ausreichend beachtet oder gedeutet. 4. Deshalb bezieht der Patient den linken Arm beim Anziehen zu wenig ein. 5. Ergotherapeutisch helfen gezielte Suchbewegungen, Markierungen, Rückmeldungen und eine strukturierte Ausrichtung zur linken Seite.</div></div>
+<div class="summary"><strong>Das musst du können:</strong> Definition, Ablauf, Subjektivität, vier Wahrnehmungsarten, Einflussfaktoren, Wahrnehmungsfehler und ergotherapeutische Konsequenzen.</div></section>
+<section class="chapter" id="motivation"><div class="eyebrow">Kapitel 2</div><h2>Motivation und Volition</h2><p class="intro">Motivation erklärt, warum eine Handlung begonnen wird. Volition erklärt, wie ein Ziel trotz Schwierigkeiten weiterverfolgt wird.</p>
+<h3>2.1 Motiv, Motivation und Volition</h3><div class="table-wrap"><table class="compare"><tr><th>Begriff</th><th>Bedeutung</th><th>Durchgehendes Beispiel</th></tr><tr><td>Motiv</td><td>Relativ stabiler Beweggrund.</td><td>Selbstständig sein.</td></tr><tr><td>Motivation</td><td>Aktuelle Handlungsbereitschaft.</td><td>Heute üben, um wieder kochen zu können.</td></tr><tr><td>Volition</td><td>Willentliche Umsetzung trotz Hindernissen.</td><td>Weiterüben, obwohl Fortschritte langsam sind.</td></tr></table></div><div class="callout peach"><strong>Merksatz:</strong> Motivation bringt dich zum Start. Volition hält dich auf dem Weg.</div>
+<h3>2.2 Maslow</h3><div class="grid"><div class="card"><h4>1. Physiologische Bedürfnisse</h4><p>Essen, Trinken, Schlaf, Schmerzfreiheit.</p></div><div class="card"><h4>2. Sicherheit</h4><p>Schutz, Stabilität, Orientierung.</p></div><div class="card"><h4>3. Soziale Bedürfnisse</h4><p>Zugehörigkeit und Beziehung.</p></div><div class="card"><h4>4. Wertschätzung</h4><p>Anerkennung und Kompetenz.</p></div><div class="card"><h4>5. Selbstverwirklichung</h4><p>Eigene Fähigkeiten und Ziele entfalten.</p></div></div><div class="callout yellow"><strong>Wichtig:</strong> Die Pyramide ist eine Orientierung, kein starres Gesetz. Menschen verfolgen auch höhere Ziele, obwohl Grundbedürfnisse nicht vollständig erfüllt sind.</div>
+<h3>2.3 McClelland</h3><div class="grid"><div class="card"><h4>Leistung</h4><p>Etwas gut schaffen und Fortschritt erleben.</p></div><div class="card"><h4>Macht/Einfluss</h4><p>Mitentscheiden und Verantwortung übernehmen.</p></div><div class="card"><h4>Anschluss</h4><p>Zugehörigkeit und Beziehung erleben.</p></div></div>
+<h3>2.4 Porter und Lawler</h3><p>Ob sich jemand anstrengt, hängt vom <strong>Wert der erwarteten Belohnung</strong> und von der <strong>Erwartung ab, dass Anstrengung zu Leistung führt</strong>. Die tatsächliche Leistung entsteht aber nicht nur durch Motivation.</p><div class="grid"><div class="card"><h4>Vor der Leistung</h4><p>Wert der Belohnung, Erwartung, Anstrengung.</p></div><div class="card"><h4>Leistungsbedingungen</h4><p>Fähigkeiten, persönliche Eigenschaften und Rollenverständnis.</p></div><div class="card"><h4>Nach der Leistung</h4><p>Innere Belohnungen wie Stolz und äußere Belohnungen wie Lob.</p></div><div class="card"><h4>Zufriedenheit</h4><p>Sie entsteht, wenn die Belohnung als angemessen und gerecht erlebt wird.</p></div></div><div class="callout blue"><strong>Kernaussage:</strong> Leistung entsteht nicht nur durch Motivation. Auch Können und Klarheit über die Aufgabe sind entscheidend.</div>
+<h3>2.5 Barbuto: fünf Quellen der Motivation</h3><div class="table-wrap"><table class="compare"><tr><th>Quelle</th><th>Einfach erklärt</th><th>Ergotherapie-Beispiel</th></tr><tr><td>Intrinsische Prozessmotivation</td><td>Die Tätigkeit selbst macht Freude.</td><td>Ein Kind übt Feinmotorik gern beim Basteln.</td></tr><tr><td>Instrumentelle Motivation</td><td>Die Handlung dient einem äußeren Ergebnis.</td><td>Ein Patient übt, um schneller entlassen zu werden.</td></tr><tr><td>Externes Selbstkonzept</td><td>Die Person möchte Anerkennung erhalten oder Erwartungen erfüllen.</td><td>Sie übt, weil die Familie stolz sein soll.</td></tr><tr><td>Internes Selbstkonzept</td><td>Die Handlung passt zum eigenen Bild von sich selbst.</td><td>„Ich bin jemand, der nicht aufgibt.“</td></tr><tr><td>Internalisierung von Zielen</td><td>Die Handlung entspricht eigenen Werten.</td><td>Selbstständigkeit ist ein persönlicher Wert.</td></tr></table></div>
+<h3>2.6 PSI-Theorie nach Julius Kuhl</h3><p>PSI bedeutet Persönlichkeits-System-Interaktionen. Vier psychische Systeme arbeiten zusammen:</p><div class="grid"><div class="card"><h4>Intentionsgedächtnis</h4><p><strong>Einfach:</strong> planen. Ziele und noch nicht ausgeführte Absichten bewusst festhalten.</p></div><div class="card"><h4>Intuitive Verhaltenssteuerung</h4><p><strong>Einfach:</strong> handeln. Routinen flüssig und passend ausführen.</p></div><div class="card"><h4>Extensionsgedächtnis</h4><p><strong>Einfach:</strong> ganzheitlich fühlen. Erfahrungen, Werte und Bedürfnisse miteinander verbinden.</p></div><div class="card"><h4>Objekterkennungssystem</h4><p><strong>Einfach:</strong> Fehler und Einzelheiten erkennen. Abweichungen genau bemerken.</p></div></div><div class="callout mint"><strong>Selbststeuerung:</strong> Je nach Situation zwischen Planen, Handeln, ganzheitlichem Selbstzugang und genauer Fehlerwahrnehmung wechseln können.</div>
+<h3>2.7 Fallbeispiel</h3><div class="case"><strong>Fall:</strong> Eine Patientin lässt Übungen aus, weil sie glaubt, diese würden nichts bringen.<div class="answer"><strong>Musterlösung:</strong> 1. Auffällig ist die geringe Erwartung, dass Anstrengung zu einem nützlichen Ergebnis führt. 2. Das passt zu Porter und Lawler. 3. Motivation hängt dort vom Wert des Ziels und der erwarteten Wirksamkeit der Anstrengung ab. 4. Die Patientin erkennt den Zusammenhang zwischen Übung und Alltagserfolg nicht. 5. Die Therapeutin sollte ein bedeutsames Ziel vereinbaren, den Nutzen erklären, die Schwierigkeit anpassen und kleine Fortschritte sichtbar machen.</div></div><div class="summary"><strong>Das musst du können:</strong> Motiv, Motivation und Volition unterscheiden; Maslow, McClelland, Porter und Lawler, Barbuto und PSI verständlich erklären und auf Fälle übertragen.</div></section>
+<section class="chapter" id="klausurtraining"><div class="eyebrow">Anwendung</div><h2>Klausurtraining Teil 1</h2><h3>Frage: Warum ist Wahrnehmung subjektiv?</h3><div class="answer">Weil das Gehirn Reize auswählt und deutet. Erfahrungen, Erwartungen, Aufmerksamkeit, Bedürfnisse, Emotionen, Kultur und körperlicher Zustand beeinflussen diese Verarbeitung. Deshalb können zwei Menschen dieselbe Situation unterschiedlich erleben.</div><h3>Frage: Erklären Sie Porter und Lawler.</h3><div class="answer">Anstrengung hängt davon ab, wie wertvoll ein Ergebnis ist und wie wahrscheinlich die Person glaubt, dass Anstrengung zur Leistung führt. Leistung hängt zusätzlich von Fähigkeiten und Rollenverständnis ab. Auf Leistung folgen innere und äußere Belohnungen. Werden diese als gerecht erlebt, entsteht Zufriedenheit.</div><div class="callout lilac"><strong>Antwortschema:</strong> 1. Auffälligkeit nennen. 2. Modell nennen. 3. Modell erklären. 4. Auf den Fall beziehen. 5. Ergotherapeutische Konsequenz begründen.</div></section>
+</main><div class="footer">Teil 1 · Wahrnehmung, Motivation und Volition</div></div><a class="back-to-top" href="#seitenanfang">↑ Zum Anfang</a></body></html>
