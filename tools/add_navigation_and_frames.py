@@ -32,3 +32,5 @@ for path in FILES:
     if 'class="back-to-top"' not in text:
         text = text.replace('</body>', BACK + '\n</body>', 1)
     path.write_text(text, encoding='utf-8')
+
+print('Navigation und Überschriftenrahmen geprüft.')
