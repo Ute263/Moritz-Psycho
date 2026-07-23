@@ -1,0 +1,34 @@
+name: Lernplattform und Suche einbauen
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/add_platform_and_search.py'
+      - '.github/workflows/add-platform-search.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v4
+
+      - name: Lernplattform und Suche einbauen
+        run: python tools/add_platform_and_search.py
+
+      - name: Änderungen committen
+        run: |
+          if git diff --quiet; then
+            echo "Keine Änderungen notwendig."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html teil2.html teil3.html
+          git commit -m "Lernplattform und Suchfunktion einbauen"
+          git push
